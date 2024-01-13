@@ -1,11 +1,8 @@
-/*
- * === Header style ===
- */
-
-/* Header style */
 header {
-  background: #fff url('../images/logo.png') 20px center no-repeat;
-  border-bottom: 1px solid #ccc;
-  height: 70px;
-  width: 100%;
+	background-color: #fff;
+	height: 70px;
+	border-bottom: 1px solid #CCCCCC;
+	background-image: url("/AirBnB_clone/web_static/images/logo.png");
+	background-repeat: no-repeat;
+	background-position: 20px center;
 }
