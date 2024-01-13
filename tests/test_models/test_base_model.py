@@ -1,4 +1,4 @@
-"""Testing the `base_model` module."""
+"""Test"""
 import json
 import os
 import time
@@ -10,20 +10,20 @@ from models.engine.file_storage import FileStorage
 
 
 class TestBase(unittest.TestCase):
-    """Test cases for the `Base` class.
+    """Test
     """
 
     def setUp(self):
         pass
 
     def tearDown(self) -> None:
-        """Resets FileStorage data."""
+        """Test."""
         FileStorage._FileStorage__objects = {}
         if os.path.exists(FileStorage._FileStorage__file_path):
             os.remove(FileStorage._FileStorage__file_path)
 
     def test_initialization_positive(self):
-        """Test passing cases `BaseModel` initialization.
+        """Test
         """
         b1 = BaseModel()
         b2_uuid = str(uuid.uuid4())
@@ -39,7 +39,7 @@ class TestBase(unittest.TestCase):
                          "<class 'models.base_model.BaseModel'>")
 
     def test_dict(self):
-        """Test method for dict"""
+        """dict"""
         b1 = BaseModel()
         b2_uuid = str(uuid.uuid4())
         b2 = BaseModel(id=b2_uuid, name="The weeknd", album="Trilogy")
@@ -53,7 +53,7 @@ class TestBase(unittest.TestCase):
             b2.to_dict()
 
     def test_save(self):
-        """Test method for save"""
+        """save"""
         b = BaseModel()
         time.sleep(0.5)
         date_now = datetime.now()
@@ -62,7 +62,7 @@ class TestBase(unittest.TestCase):
         self.assertTrue(abs(diff.total_seconds()) < 0.01)
 
     def test_save_storage(self):
-        """Tests that storage.save() is called from save()."""
+        """Test"""
         b = BaseModel()
         b.save()
         key = "{}.{}".format(type(b).__name__, b.id)
@@ -75,7 +75,7 @@ class TestBase(unittest.TestCase):
             self.assertEqual(json.load(f), d)
 
     def test_save_no_args(self):
-        """Tests save() with no arguments."""
+        """Test"""
         self.resetStorage()
         with self.assertRaises(TypeError) as e:
             BaseModel.save()
@@ -83,7 +83,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(str(e.exception), msg)
 
     def test_save_excess_args(self):
-        """Tests save() with too many arguments."""
+        """Test"""
         self.resetStorage()
         with self.assertRaises(TypeError) as e:
             BaseModel.save(self, 98)
@@ -91,7 +91,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(str(e.exception), msg)
 
     def test_str(self):
-        """Test method for str representation"""
+        """Test"""
         b1 = BaseModel()
         string = f"[{type(b1).__name__}] ({b1.id}) {b1.__dict__}"
         self.assertEqual(b1.__str__(), string)

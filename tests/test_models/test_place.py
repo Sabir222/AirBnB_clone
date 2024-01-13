@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Unit tests for the `city` module.
+"""Unit 
 """
 import os
 import unittest
@@ -10,19 +10,19 @@ from datetime import datetime
 
 
 class TestPlace(unittest.TestCase):
-    """Test cases for the `Place` class."""
+    """Test"""
 
     def setUp(self):
         pass
 
     def tearDown(self) -> None:
-        """Resets FileStorage data."""
+        """Reset"""
         FileStorage._FileStorage__objects = {}
         if os.path.exists(FileStorage._FileStorage__file_path):
             os.remove(FileStorage._FileStorage__file_path)
 
     def test_params(self):
-        """Test method for class attributes"""
+        """Test"""
 
         p1 = Place()
         p3 = Place("hello", "wait", "in")
@@ -44,7 +44,7 @@ class TestPlace(unittest.TestCase):
         self.assertIsInstance(p1.amenity_ids, list)
 
     def test_init(self):
-        """Test method for public instances"""
+        """Test"""
 
         p1 = Place()
         p2 = Place(**p1.to_dict())
@@ -54,20 +54,20 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(p1.updated_at, p2.updated_at)
 
     def test_str(self):
-        """Test method for str representation"""
+        """Test"""
         p1 = Place()
         string = f"[{type(p1).__name__}] ({p1.id}) {p1.__dict__}"
         self.assertEqual(p1.__str__(), string)
 
     def test_save(self):
-        """Test method for save"""
+        """Test"""
         p1 = Place()
         old_update = p1.updated_at
         p1.save()
         self.assertNotEqual(p1.updated_at, old_update)
 
     def test_todict(self):
-        """Test method for dict"""
+        """Test"""
         p1 = Place()
         p2 = Place(**p1.to_dict())
         a_dict = p2.to_dict()
