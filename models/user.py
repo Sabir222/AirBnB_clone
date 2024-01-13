@@ -3,7 +3,8 @@ from models.base_model import BaseModel
 
 
 class User(BaseModel):
-    """Creates a new user"""
+    """user"""
+
     email = ""
     password = ""
     first_name = ""

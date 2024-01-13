@@ -10,7 +10,7 @@ from models.base_model import BaseModel
 class Place(BaseModel):
     """place
 
-    Attributes: name,user,city_id,description,number_bathrooms,price_by_night,number_rooms,longitude,latitude,max_guest,amenity_ids
+    Attributes: name,user,city_id,description, number_bathrooms,price_by_night,number_rooms,longitude,latitude,max_guest,amenity_ids
     """
 
     name = ""

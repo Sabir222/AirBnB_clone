@@ -12,6 +12,5 @@ class City(BaseModel):
     Attributes:name,state_id
 
     """
-
     name = ""
     state_id = ""
