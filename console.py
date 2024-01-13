@@ -1,29 +1,7 @@
 #!/usr/bin/python3
-"""This module defines the entry point of the command interpreter.
+"""
+entry points
 
-It defines one class, `HBNBCommand()`, which sub-classes the `cmd.Cmd` class.
-This module defines abstractions that allows us to manipulate a powerful
-storage system (FileStorage / DB). This abstraction will also allow us to
-change the type of storage easily without updating all of our codebase.
-
-It allows us to interactively and non-interactively:
-    - create a data model
-    - manage (create, update, destroy, etc) objects via a console / interpreter
-    - store and persist objects to a file (JSON file)
-
-Typical usage example:
-
-    $ ./console
-    (hbnb)
-
-    (hbnb) help
-    Documented commands (type help <topic>):
-    ========================================
-    EOF  create  help  quit
-
-    (hbnb)
-    (hbnb) quit
-    $
 """
 import re
 import cmd
@@ -43,21 +21,15 @@ current_classes = {'BaseModel': BaseModel, 'User': User,
 
 
 class HBNBCommand(cmd.Cmd):
-    """The command interpreter.
+    """
+    console class
 
-    This class represents the command interpreter, and the control center
-    of this project. It defines function handlers for all commands inputted
-    in the console and calls the appropriate storage engine APIs to manipulate
-    application data / models.
-
-    It sub-classes Python's `cmd.Cmd` class which provides a simple framework
-    for writing line-oriented command interpreters.
     """
 
     prompt = "(hbnb) "
 
     def precmd(self, line):
-        """Defines instructions to execute before <line> is interpreted.
+        """ instructions
         """
         if not line:
             return '\n'
@@ -95,28 +67,28 @@ class HBNBCommand(cmd.Cmd):
                     re.sub("[\"\']", "", args[1]), args[2])
 
     def do_help(self, arg):
-        """To get help on a command, type help <topic>.
+        """topic.
         """
         return super().do_help(arg)
 
     def do_EOF(self, line):
-        """Inbuilt EOF command to gracefully catch errors.
+        """ errors.
         """
         print("")
         return True
 
     def do_quit(self, arg):
-        """Quit command to exit the program.
+        """Quit.
         """
         return True
 
     def emptyline(self):
-        """Override default `empty line + return` behaviour.
+        """empty liner.
         """
         pass
 
     def do_create(self, arg):
-        """Creates a new instance.
+        """Creates instance.
         """
         args = arg.split()
         if not validate_classname(args):
@@ -127,7 +99,7 @@ class HBNBCommand(cmd.Cmd):
         print(new_obj.id)
 
     def do_show(self, arg):
-        """Prints the string representation of an instance.
+        """ string
         """
         args = arg.split()
         if not validate_classname(args, check_id=True):
@@ -142,7 +114,7 @@ class HBNBCommand(cmd.Cmd):
         print(req_instance)
 
     def do_destroy(self, arg):
-        """Deletes an instance based on the class name and id.
+        """Delete.
         """
         args = arg.split()
         if not validate_classname(args, check_id=True):
@@ -159,7 +131,7 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def do_all(self, arg):
-        """Prints string representation of all instances.
+        """Prints instances.
         """
         args = arg.split()
         all_objs = storage.all()
@@ -176,7 +148,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
     def do_update(self, arg: str):
-        """Updates an instance based on the class name and id.
+        """Updates.
         """
         args = arg.split(maxsplit=3)
         if not validate_classname(args, check_id=True):
@@ -213,7 +185,7 @@ class HBNBCommand(cmd.Cmd):
 
 
 def validate_classname(args, check_id=False):
-    """Runs checks on args to validate classname entry.
+    """checks.
     """
     if len(args) < 1:
         print("** class name missing **")
@@ -228,7 +200,7 @@ def validate_classname(args, check_id=False):
 
 
 def validate_attrs(args):
-    """Runs checks on args to validate classname attributes and values.
+    """values.
     """
     if len(args) < 3:
         print("** attribute name missing **")
@@ -240,7 +212,7 @@ def validate_attrs(args):
 
 
 def is_float(x):
-    """Checks if `x` is float.
+    """float.
     """
     try:
         a = float(x)
@@ -251,7 +223,7 @@ def is_float(x):
 
 
 def is_int(x):
-    """Checks if `x` is int.
+    """int.
     """
     try:
         a = float(x)
@@ -263,7 +235,7 @@ def is_int(x):
 
 
 def parse_str(arg):
-    """Parse `arg` to an `int`, `float` or `string`.
+    """Parse
     """
     parsed = re.sub("\"", "", arg)
 
